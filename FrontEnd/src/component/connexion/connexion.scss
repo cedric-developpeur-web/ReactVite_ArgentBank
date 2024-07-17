@@ -1,0 +1,54 @@
+#background_dark {
+  flex: 1;
+  background-color: #12002b;
+
+  .content {
+    box-sizing: border-box;
+    background-color: white;
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 48px;
+    padding: 32px;
+
+    .input_wrapper {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      margin-bottom: 16px;
+
+      label {
+        font-weight: bold;
+      }
+
+      input {
+        padding: 5px;
+        font-size: 19px;
+      }
+    }
+
+    .input_remember {
+      display: flex;
+
+      label {
+        margin-left: 4px;
+      }
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      font-size: 17px;
+      font-weight: bold;
+      margin-top: 16px;
+      border: 2px solid #00bc77;
+      background-color: #00bc77;
+      color: #fff;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}

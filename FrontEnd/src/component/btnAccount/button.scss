@@ -1,0 +1,24 @@
+.btn-content {
+  width: 100%;
+  flex: 1;
+
+  @media screen and (min-width: 720px) {
+    flex: 0;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 16px;
+    border: solid #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+
+    @media screen and (min-width: 720px) {
+      width: 200px;
+    }
+  }
+}
