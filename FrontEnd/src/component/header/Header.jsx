@@ -26,6 +26,10 @@ const Header = () => {
     console.log('deconnexion');
   }
 
+  const interfaceUse = () => {
+    nav('/user')
+  }
+
   return (
     <header>
       <nav className="nav_bar">
@@ -36,7 +40,7 @@ const Header = () => {
         {token ? (
           <ul>
             {/* <li><i className="fa fa-user-circle"></i></li> */}
-            <li><i className="fa fa-user-circle"></i>{use.userName}</li>
+            <li><i className="fa fa-user-circle" onClick={interfaceUse}></i>{use?.userName}</li>
             <li onClick={signOut}>
               <i className="fa-solid fa-right-from-bracket"></i>
             </li>

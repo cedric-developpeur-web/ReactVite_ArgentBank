@@ -29,7 +29,6 @@ const EditName = () => {
       setLastName(use.lastName || '');
     }
   }, [use, tok])
-
   // fonction qui me permet de modifier les champs du formulaire
   async function submitForm(e) {
     e.preventDefault();
@@ -47,13 +46,12 @@ const EditName = () => {
     })
     if (reponse.ok) {
       const data = await reponse.json();
-      console.log('valided', data);
       dispatch(isUser({ userName, firstName, lastName }));
+      console.log('valided', data);
     } else {
       console.log('fail');
     }
   };
-
   // state pour l'affichage du formualaire etat initiale a false
   const [visible, setVisible] = useState(false);
 
@@ -66,7 +64,7 @@ const EditName = () => {
     <main id='background'>
       <section>
         {/* <h1>Welcome back <br />!</h1> */}
-        <h1>Welcome back <br />{use.firstName}&nbsp;{use.lastName}!</h1>
+        <h1>Welcome back <br />{use?.firstName}&nbsp;{use?.lastName}!</h1>
         <button onClick={openChanged}>Edit Name</button>
         <div>
           <form id='changed' style={{ display: visible ? 'block' : 'none' }} onSubmit={submitForm}>
@@ -77,11 +75,11 @@ const EditName = () => {
             <label htmlFor="firstName">
               First Name:
             </label>
-            <input type="text" id='firstName' name='firstName' value={firstName} />
+            <input type="text" id='firstName' name='firstName' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
             <label htmlFor="lastName">
               Last Name:
             </label>
-            <input type="text" id='lastName' name='lastName' value={lastName} />
+            <input type="text" id='lastName' name='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </form>
         </div>
       </section>
