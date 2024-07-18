@@ -47,11 +47,17 @@ const EditName = () => {
     if (reponse.ok) {
       const data = await reponse.json();
       dispatch(isUser({ userName, firstName, lastName }));
-      console.log('valided', data);
     } else {
       console.log('fail');
     }
   };
+  // fonction qui permet annueler les modifications et de fermet le formulaire
+  const cancel = () => {
+    if (use) {
+      setUserName(use.userName || '')
+    }
+    setVisible(false)
+  }
   // state pour l'affichage du formualaire etat initiale a false
   const [visible, setVisible] = useState(false);
 
@@ -67,7 +73,7 @@ const EditName = () => {
         <h1>Welcome back <br />{use?.firstName}&nbsp;{use?.lastName}!</h1>
         <button onClick={openChanged}>Edit Name</button>
         <div>
-          <form id='changed' style={{ display: visible ? 'block' : 'none' }} onSubmit={submitForm}>
+          <form id='changed' style={{ display: visible ? 'block' : 'none' }} onSubmit={submitForm} type='submit'>
             <label htmlFor="changedName">
               User Name:
             </label>
@@ -75,11 +81,15 @@ const EditName = () => {
             <label htmlFor="firstName">
               First Name:
             </label>
-            <input type="text" id='firstName' name='firstName' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+            <input type="text" id='firstName' name='firstName' value={firstName} readOnly />
             <label htmlFor="lastName">
               Last Name:
             </label>
-            <input type="text" id='lastName' name='lastName' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+            <input type="text" id='lastName' name='lastName' value={lastName} readOnly />
+            <div className='button_submit'>
+              <button type='submit'>Valided</button>
+              <button className='cancel' onClick={cancel}>Cancel</button>
+            </div>
           </form>
         </div>
       </section>

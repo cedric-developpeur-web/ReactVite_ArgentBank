@@ -34,7 +34,7 @@ const Header = () => {
     <header>
       <nav className="nav_bar">
         <NavLink to="/">
-          <img id="logo" src={Logo} alt="argent bank logo" />
+          <img id="logo" src={Logo} alt="money bank logo" />
           <h1>Argent Bank</h1>
         </NavLink>
         {token ? (

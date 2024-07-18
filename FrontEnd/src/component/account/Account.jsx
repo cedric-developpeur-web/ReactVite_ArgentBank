@@ -7,7 +7,7 @@ const Account = () => {
       <section className='account'>
         <div className='content'>
           <h2>Argent Bank Checking (x8349)</h2>
-          <p className='prize'>$2,082.79</p>
+          <h3 className='prize'>$2,082.79</h3>
           <p className='description'>Available Balance</p>
         </div>
         <ButtonAccount />
@@ -15,7 +15,7 @@ const Account = () => {
       <section className='account'>
         <div className='content'>
           <h2>Argent Bank Savings (x6712)</h2>
-          <p className='prize'>$10,928.42</p>
+          <h3 className='prize'>$10,928.42</h3>
           <p className='description'>Available Balance</p>
         </div>
         <ButtonAccount />
@@ -23,7 +23,7 @@ const Account = () => {
       <section className='account'>
         <div className='content'>
           <h2>Argent Bank Credit Card (x8349)</h2>
-          <p className='prize'>$184.30</p>
+          <h3 className='prize'>$184.30</h3>
           <p className='description'>Curent Balance</p>
         </div>
         <ButtonAccount />

@@ -14,9 +14,10 @@
   button {
     border: solid #00bc77;
     background-color: #00bc77;
-    color: #fff;
+    color: #000000;
     font-weight: bold;
     padding: 10px;
+    cursor: pointer;
   }
 }
 
@@ -34,8 +35,16 @@
   input {
     margin-top: 10px;
   }
-}
 
-#valided {
-  margin-top: 20px;
+  .button_submit {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+
+    .cancel {
+      background-color: #ff0000;
+      border-color: #ff0000;
+    }
+  }
 }
