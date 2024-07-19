@@ -33,19 +33,19 @@ const EditName = () => {
   async function submitForm(e) {
     e.preventDefault();
     const formData = {
-      userName,
-      firstName,
-      lastName,
+      userName: userName
     };
     const reponse = await fetch('http://localhost:3001/api/v1/user/profile', {
       method: 'PUT',
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${tok}`,
       },
       body: JSON.stringify(formData),
     })
     if (reponse.ok) {
-      const data = await reponse.json();
+      const data = await reponse.json()
+      console.log(data);
       dispatch(isUser({ userName, firstName, lastName }));
     } else {
       console.log('fail');
