@@ -101,6 +101,94 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  # route qui me permet de recuperer les transaction du mois en cour
+  /transaction:
+    get:
+  # definit la categorie des requete dans swagger
+      tags:
+        - transaction Module
+      summary: month transaction API
+      description: visual transaction month of user
+      parameters:
+        - in: query
+          name: idUser
+          description: id of user
+          required: true
+          type: string
+      produces:
+        - application/json
+       # les différentent statuts de reusit ou autre selon la reponse recuperer
+      responses:
+        '200':
+          description: visualization of successful transaction
+          schema:
+            $ref: '#/definitions/transactionResponse'
+        '400':
+          description: Invalid id user
+        '500':
+          description: Internal Server Error
+  # route qui me permet d'avoir les transactions plus détail du mois en cour
+  /transaction/{transactionId}:
+    get:
+   # creation de token qui et neccesaire pour utiliser cette requete
+      security:
+        - Bearer: []
+      # definit la categorie des requete dans swagger
+      tags:
+        - transaction Module
+      summary: View transaction details
+      description: view details of a specific transaction
+      parameters:
+        - in: path
+          name: transactionId
+          type: string
+          required: true
+          description: ID of the transaction
+      produces:
+        - application/json
+       # les différentent statuts de reusit ou autre selon la reponse recuperer
+      responses:
+        '200':
+          description: visualization of successful transaction detail
+          schema:
+            $ref: '#/definitions/TransactionDetailsResponse'
+        '400':
+          description: Invalid id transaction
+        '404':
+          description: transaction not found
+        '500':
+          description: Internal Server Error
+  # route qui me permet de mettre a jour une transaction
+  /tansactions:
+    put:
+  # creation de token qui et neccesaire pour utiliser cette requete
+      security:
+        - Bearer: []
+    # definit la categorie des requete dans swagger
+      tags:
+        - transaction Module
+      summary: Update transaction details
+      description: update the details of a specific transaction
+      parameters:
+      - in: query
+        name: transactionId
+        type: string
+        description: transaction id of user
+        required: true
+      produces:
+        - application/json
+  # les différentent statuts de reusit ou autre selon la reponse recuperer
+      responses:
+        '200':
+          description: transaction updated Successfully
+          schema:
+            $ref: '#/definitions/UpdateTransaction'
+        '400':
+          description: Invalid transaction id
+        '404':
+          description: transaction not found
+        '500':
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -156,3 +244,70 @@ definitions:
     properties:
       userName:
         type: string
+  transactionResponse:
+   type: object
+   properties:
+    status:
+      type: integer
+    message:
+      type: string
+    account:
+      type: array
+      items:
+        type: object
+        properties:
+          accountId:
+            type: string
+          accountName:
+            type: string
+          transactions:
+            type: array
+            items:
+              type: object
+              properties:
+                transactionId:
+                  type: string
+                date:
+                  type: string
+                amount:
+                  type: number
+                description:
+                  type: string
+                balance:
+                  type: number
+  TransactionDetailsResponse:
+   type: object
+   properties:
+    status:
+      type: integer
+    message:
+      type: string
+    transaction:
+      type: object
+      properties:
+        transactionId:
+          type: string
+        date:
+          type: string
+        amount:
+          type: number
+        description:
+          type: string
+        accountId:
+          type: string
+        accountName:
+          type: string
+        balance:
+          type: number
+          description: The balance after the transaction
+        category:
+          type: string
+        note:
+          type: string
+  UpdateTransaction:
+   type: object
+   properties:
+    note:
+      type: string
+    category:
+      type: string
