@@ -159,7 +159,7 @@ paths:
         '500':
           description: Internal Server Error
   # route qui me permet de mettre a jour une transaction
-  /tansactions:
+  /tansaction:
     put:
   # creation de token qui et neccesaire pour utiliser cette requete
       security:
@@ -251,20 +251,25 @@ definitions:
       type: integer
     message:
       type: string
+  # representation compte individuelle
     account:
       type: array
       items:
         type: object
         properties:
+  # identifient unique pour le compte
           accountId:
             type: string
+    # nom du compte
           accountName:
             type: string
+    # represente transaction individuelle associé au compte
           transactions:
             type: array
             items:
               type: object
               properties:
+    # identifiant unique pour la transaction
                 transactionId:
                   type: string
                 date:
@@ -273,6 +278,7 @@ definitions:
                   type: number
                 description:
                   type: string
+    # permet de voir les transaction effectuer en temps reel
                 balance:
                   type: number
   TransactionDetailsResponse:
