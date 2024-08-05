@@ -7,7 +7,8 @@ const Connexion = () => {
 
   // etat donnee utilisateur
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("false");
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -37,6 +38,7 @@ const Connexion = () => {
       navigate('/User')
     } else {
       dispatch(badLogin());
+      setError('Login failed, please check your credentials')
     }
   }
 
@@ -54,6 +56,7 @@ const Connexion = () => {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" name='password' value={password} onChange={updatePassword} />
           </div>
+          <span id='error'>{error}</span>
           <div className='input_remember'>
             <input type="checkbox" name="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>

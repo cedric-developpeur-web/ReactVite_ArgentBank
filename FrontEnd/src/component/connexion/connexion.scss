@@ -50,5 +50,13 @@
         text-decoration: underline;
       }
     }
+
+    #error {
+      display: block;
+      justify-content: center;
+      color: #f22c3d;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
   }
 }
