@@ -7,8 +7,8 @@ const Connexion = () => {
 
   // etat donnee utilisateur
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("false");
-  const [error, setError] = useState('');
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
